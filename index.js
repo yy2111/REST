@@ -39,7 +39,7 @@ function getDefaultOptions(endpoint, method)
 		url: urlRoot + endpoint,
 		method: method,
 		headers: {
-			"User-Agent": "CSC510-REST-WORKSHOP",
+			"User-Agent": "ssw345-REST-lab",
 			"content-type": "application/json",
 			"Authorization": `token ${config.token}`
 		}
