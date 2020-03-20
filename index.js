@@ -27,7 +27,7 @@ if (process.env.NODE_ENV != 'test')
 	(async () => {
 		await listAuthenicatedUserRepos();
 		await listBranches(userId, "345");
-		await createRepo(userId,newrepo);
+		await createRepo(userId, "newrepo");
 		//await createIssue(userId, repo, issue);
 		//await enableWikiSupport(userId,repo);
 
@@ -130,17 +130,27 @@ async function listBranches(owner,repo)
 // 2. Write code to create a new repo
 async function createRepo(owner,repo)
 {
-	let options = getDefaultOptions("/", "POST");
+	let options = getDefaultOptions(`/user/repos?name=${repo}`, "POST");
 
 	// Send a http request to url and specify a callback that will be called upon its return.
-	return new Promise(function(resolve, reject)
-	{
-		request(options, function (error, response, body) {
-
-			resolve( response.statusCode );
-
-		});
-	});
+	request.post('https://api.github.com/user/repos', {
+		json: {
+		  name: repo,
+		  description: 'test new repo',
+		},
+		headers: {
+			"User-Agent": "ssw345-REST-lab",
+			"content-type": "application/json",
+			"Authorization": `token ${config.token}`
+		}
+	  }, (error, res, body) => {
+		if (error) {
+		  console.error(error);
+		  return;
+		}
+		console.log(`statusCode: ${res.statusCode}`);
+		console.log(body);
+	  })
 
 }
 // 3. Write code for creating an issue for an existing repo.
