@@ -99,7 +99,7 @@ You will get practice interacting with the GitHub REST API.
 Before you start, make sure you have a local copy of this workshop, and change your working directory (`cd REST`).
 
 ```bash
-git clone https://github.com/CSC-510/REST
+git clone https://github.com/yy2111/REST
 ```
 
 ### 1. Get a token. 
