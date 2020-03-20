@@ -1,7 +1,7 @@
 # Introduction
 
 A *RESTful architecture*, is an architectural style ([Fielding](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)) for providing resources to clients using a set of request verbs and resource locations. A REST API allows a client to access resources provided by a service.
-You can read more about REST apis [here](https://github.com/CSC-326/Course/raw/master/Slides/RESTAPI_Frameworks.pptx).
+
 
 
 In this workshop, you will learn the concepts associated with REST APIs, practice accessing an existing REST api as a client, and implement a REST service.
@@ -104,13 +104,7 @@ git clone https://github.com/CSC-510/REST
 
 ### 1. Get a token. 
 
-Go to your profile page on github.
-
-![image](https://cloud.githubusercontent.com/assets/742934/12955762/8d8ae346-cff2-11e5-83ac-21cae5dc8531.png)
-
-![image](https://cloud.githubusercontent.com/assets/742934/12955783/a741d0b0-cff2-11e5-9f95-4cfebe421756.png)
-
-<hr/>
+Go to your profile page on github, select "Settings" --> "Developer settings" --> "Personal access tokens", and then click on "Generate new token" button.
 
 Save your token in an [environment variable](https://github.com/chrisparnin/EngineeringBasics/blob/master/Shells.md#environment-variables).
 
