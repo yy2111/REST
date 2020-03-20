@@ -34,7 +34,9 @@ Typically, REST API operations are carried out over HTTP; consequently most REST
 
 ## Practicting with a REST Client
 
-Let's see how a javascript client application can communicate with a server using a REST API call.
+For this lab, you will need to use node.js. If you dont already have it, see if you can download and install it, refer to this page for more details: https://nodejs.org/en/download/package-manager/.
+
+We will focus on learning how a javascript client application can communicate with a server using a REST API call.
 
 ### Sending a GET request from inside the browser
 
@@ -106,7 +108,7 @@ git clone https://github.com/yy2111/REST
 
 Go to your profile page on github, select "Settings" --> "Developer settings" --> "Personal access tokens", and then click on "Generate new token" button.
 
-Save your token in an [environment variable](https://github.com/chrisparnin/EngineeringBasics/blob/master/Shells.md#environment-variables).
+Save your token in an [environment variable]. This step may be a little tricky, and please read instructions on this page carefully: https://github.com/chrisparnin/EngineeringBasics/blob/master/Shells.md#environment-variables.
 
 ```bash
 # Mac/Linux
