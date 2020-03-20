@@ -123,7 +123,7 @@ Install node package dependencies into `node_modules/`
 npm install
 ```
 
-Edit index.js to replace `var userId = "chrisparnin"` with _your_ github username.
+Edit index.js to replace `var userId = "yy2111"` with _your_ github username.
 
 Now run the script. You should be able to see a list of your repos (may be empty, we'll fix that!).
 
@@ -139,7 +139,7 @@ Here is the key part of the code that makes the actual REST request:
 		url: urlRoot + '/users/' + userName + "/repos",
 		method: 'GET',
 		headers: {
-			"User-Agent": "CSC510-REST-WORKSHOP",
+			"User-Agent": "ssw345-REST-lab",
 			"content-type": "application/json",
 			"Authorization": `token: ${config.token}`
 		}
