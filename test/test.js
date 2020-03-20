@@ -28,7 +28,7 @@ describe("GitHub EndPoint Tests", function() {
     it("createRepo successfully creates repo", async function() {
         
       let user  = await github.getUser();
-      let status = await github.createRepo(user, "test-HW1-510");
+      let status = await github.createRepo(user, "test-HW4-345");
       expect(status).to.equal(201);
 
     });
@@ -37,7 +37,7 @@ describe("GitHub EndPoint Tests", function() {
     it("createIssue successfully creates issue", async function() {
       
       let user  = await github.getUser();
-      let status = await github.createIssue(user, "HW1-510", "issue name", "issue body");
+      let status = await github.createIssue(user, "HW4-345", "issue name", "issue body");
       expect(status).to.equal(201);
 
     });
@@ -45,7 +45,7 @@ describe("GitHub EndPoint Tests", function() {
     it("enableWikiSupport successfully enables wiki support", async function() {
       
       let user  = await github.getUser();
-      let response = await github.enableWikiSupport(user, "HW1-510");
+      let response = await github.enableWikiSupport(user, "HW4-345");
 
       expect(response).to.have.property('has_wiki');
       expect(response.has_wiki).to.equal(true);
