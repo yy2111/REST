@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - "7"
   - "node"
-scripts: node index.js
+script: node index.js
