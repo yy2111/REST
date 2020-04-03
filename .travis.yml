@@ -1,9 +1,8 @@
 language: node_js
 node_js:
   - "stable"
-chche: npm
-install:
-  -npm ci
+cache: npm
+
   
 script:
   -npm run build
