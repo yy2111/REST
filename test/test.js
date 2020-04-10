@@ -21,11 +21,8 @@ describe("GitHub EndPoint Tests", function() {
     it("listBranches returns list branches", async function() {
         
       let user  = await github.getUser();
-<<<<<<< HEAD
       let repos = await github.listBranches(user,"345");
-=======
-      let repos = await github.listBranches(user,"HW4-345");
->>>>>>> 3d9d8f3ac12b421ea0b345e03f8b10d67557b0b9
+//      let repos = await github.listBranches(user,"HW4-345");
       expect(repos).to.be.an('array').that.have.nested.property("[0].name").equals("master");
 
     });
@@ -33,12 +30,9 @@ describe("GitHub EndPoint Tests", function() {
     it("createRepo successfully creates repo", async function() {
         
       let user  = await github.getUser();
-<<<<<<< HEAD
       let status = await github.createRepo(user, newrepo);
       console.log(status);
-=======
-      let status = await github.createRepo(user, "test-HW4-345");
->>>>>>> 3d9d8f3ac12b421ea0b345e03f8b10d67557b0b9
+//      let status = await github.createRepo(user, "test-HW4-345");
       expect(status).to.equal(201);
 
     });
@@ -47,11 +41,8 @@ describe("GitHub EndPoint Tests", function() {
     it("createIssue successfully creates issue", async function() {
       
       let user  = await github.getUser();
-<<<<<<< HEAD
       let status = await github.createIssue(user, "345", newrepo+"issue created", "issue body");
-=======
-      let status = await github.createIssue(user, "HW4-345", "issue name", "issue body");
->>>>>>> 3d9d8f3ac12b421ea0b345e03f8b10d67557b0b9
+//      let status = await github.createIssue(user, "HW4-345", "issue name", "issue body");
       expect(status).to.equal(201);
 
     });
@@ -59,11 +50,7 @@ describe("GitHub EndPoint Tests", function() {
     it("enableWikiSupport successfully enables wiki support", async function() {
       
       let user  = await github.getUser();
-<<<<<<< HEAD
       let response = await github.enableWikiSupport(user, "345");
-=======
-      let response = await github.enableWikiSupport(user, "HW4-345");
->>>>>>> 3d9d8f3ac12b421ea0b345e03f8b10d67557b0b9
 
       expect(response.body).to.have.property('has_wiki');
       expect(response.body.has_wiki).to.equal(true);
