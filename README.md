@@ -1,7 +1,7 @@
 # Introduction
 
 A *RESTful architecture*, is an architectural style ([Fielding](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)) for providing resources to clients using a set of request verbs and resource locations. A REST API allows a client to access resources provided by a service.
-You can read more about REST apis [here](https://github.com/CSC-326/Course/raw/master/Slides/RESTAPI_Frameworks.pptx).
+
 
 
 In this workshop, you will learn the concepts associated with REST APIs, practice accessing an existing REST api as a client, and implement a REST service.
@@ -34,7 +34,9 @@ Typically, REST API operations are carried out over HTTP; consequently most REST
 
 ## Practicting with a REST Client
 
-Let's see how a javascript client application can communicate with a server using a REST API call.
+For this lab, you will need to use node.js. If you dont already have it, see if you can download and install it, refer to this page for more details: https://nodejs.org/en/download/package-manager/.
+
+We will focus on learning how a javascript client application can communicate with a server using a REST API call.
 
 ### Sending a GET request from inside the browser
 
@@ -99,20 +101,14 @@ You will get practice interacting with the GitHub REST API.
 Before you start, make sure you have a local copy of this workshop, and change your working directory (`cd REST`).
 
 ```bash
-git clone https://github.com/CSC-510/REST
+git clone https://github.com/yy2111/REST
 ```
 
 ### 1. Get a token. 
 
-Go to your profile page on github.
+Go to your profile page on github, select "Settings" --> "Developer settings" --> "Personal access tokens", and then click on "Generate new token" button.
 
-![image](https://cloud.githubusercontent.com/assets/742934/12955762/8d8ae346-cff2-11e5-83ac-21cae5dc8531.png)
-
-![image](https://cloud.githubusercontent.com/assets/742934/12955783/a741d0b0-cff2-11e5-9f95-4cfebe421756.png)
-
-<hr/>
-
-Save your token in an [environment variable](https://github.com/chrisparnin/EngineeringBasics/blob/master/Shells.md#environment-variables).
+Save your token in an [environment variable]. This step may be a little tricky, and please read instructions on this page carefully: https://github.com/chrisparnin/EngineeringBasics/blob/master/Shells.md#environment-variables.
 
 ```bash
 # Mac/Linux
@@ -129,7 +125,7 @@ Install node package dependencies into `node_modules/`
 npm install
 ```
 
-Edit index.js to replace `var userId = "chrisparnin"` with _your_ github username.
+Edit index.js to replace `var userId = "yy2111"` with _your_ github username.
 
 Now run the script. You should be able to see a list of your repos (may be empty, we'll fix that!).
 
@@ -145,7 +141,7 @@ Here is the key part of the code that makes the actual REST request:
 		url: urlRoot + '/users/' + userName + "/repos",
 		method: 'GET',
 		headers: {
-			"User-Agent": "CSC510-REST-WORKSHOP",
+			"User-Agent": "ssw345-REST-lab",
 			"content-type": "application/json",
 			"Authorization": `token: ${config.token}`
 		}
