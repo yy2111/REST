@@ -3,8 +3,10 @@ var assert = chai.assert,
     expect = chai.expect;
 
 process.env.NODE_ENV = 'test'
-var github = require('../index');
-const newrepo = "test-345-new19";
+const github = require('../index');
+const timeStamp = new Date();
+let postTimeStamp = timeStamp.getTime(); 
+const newrepo = "test-repo-" + postTimeStamp;
 
 // Turn off logging
 console.log = function(){};
