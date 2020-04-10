@@ -27,9 +27,9 @@ if (process.env.NODE_ENV != 'test')
 	(async () => {
 		await listAuthenicatedUserRepos();
 		await listBranches(userId, "345");
-		await createRepo(userId, "newrepo");
-		//await createIssue(userId, repo, issue);
-		//await enableWikiSupport(userId,repo);
+		await createRepo(userId, "newrepo_test");
+		//await createIssue(userId, "newrepo", "test issue");
+		//await enableWikiSupport(userId,"newrepo_wiki");
 
 	})()
 }
@@ -148,40 +148,74 @@ async function createRepo(owner,repo)
 		  console.error(error);
 		  return;
 		}
+		console.log(" ");
+		console.log("New repo created:");
+			
 		console.log(`statusCode: ${res.statusCode}`);
 		console.log(body);
 	  })
 
 }
 // 3. Write code for creating an issue for an existing repo.
-async function createIssue(owner,repo, issueName, issueBody)
+async function createIssue(owner,repo, issueName)
 {
-	let options = getDefaultOptions("/", "POST");
+	//let options = getDefaultOptions(`/${repo}/issues`, "POST");
 
 	// Send a http request to url and specify a callback that will be called upon its return.
-	return new Promise(function(resolve, reject)
-	{
-		request(options, function (error, response, body) {
-
-			resolve( response.statusCode );
-
-		});
-	});
+	request.post(`https://api.github.com/repos/${owner}/${repo}/issues`, {
+		json: {
+		  title: issueName,
+		  body: 'test issueBody',
+		  labels: ['bug']
+		},
+		headers: {
+			"User-Agent": "ssw345-REST-lab",
+			"content-type": "application/json",
+			"Authorization": `token ${config.token}`
+		}
+	  }, (error, res, body) => {
+		if (error) {
+		  console.error(error);
+		  return;
+		}
+		
+		console.log(" ");
+		console.log("New issue created:");
+		
+		console.log(`statusCode: ${res.statusCode}`);
+		console.log(body);
+	  })
 }
 
 // 4. Write code for editing a repo to enable wiki support.
 async function enableWikiSupport(owner,repo)
 {
-	let options = getDefaultOptions("/", "PATCH");
+	//let options = getDefaultOptions(`/repos/${owner}/${repo}`, "PATCH");
 
 	// Send a http request to url and specify a callback that will be called upon its return.
-	return new Promise(function(resolve, reject)
-	{
-		request(options, function (error, response, body) {
-
-			resolve( JSON.parse(body) );
-		});
-	});	
+	request.post(`https://api.github.com/repos/${owner}/${repo}`, {
+		json: {
+		  name: repo,
+		  description: 'update wiki page',
+		  has_wiki: true
+		},
+		headers: {
+			"User-Agent": "ssw345-REST-lab",
+			"content-type": "application/json",
+			"Authorization": `token ${config.token}`
+		}
+	  }, (error, res, body) => {
+		if (error) {
+		  console.error(error);
+		  return;
+		}
+		
+		console.log(" ");
+		console.log("Wiki enabled for repo:");
+			
+		console.log(`statusCode: ${res.statusCode}`);
+		console.log(body);
+	  })
 }
 
 module.exports.getUser = getUser;
