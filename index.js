@@ -21,15 +21,14 @@ if( !config.token )
 
 console.log(chalk.green(`Your token is: ${config.token.substring(0,4)}...`));
 
-
 if (process.env.NODE_ENV != 'test')
 {
 	(async () => {
 		await listAuthenicatedUserRepos();
-		await listBranches(userId, "345");
-		await createRepo(userId, newrepo);
-		await createIssue(userId, "345", "new issue");
-		await enableWikiSupport(userId,"345");
+		//await listBranches(userId, "your repo");
+		//await createRepo(userId,newrepo);
+		//await createIssue(userId, repo, issue);
+		//await enableWikiSupport(userId,repo);
 
 	})()
 }
@@ -78,7 +77,6 @@ function listAuthenicatedUserRepos()
 				return; // Terminate execution.
 			}
 
-			console.log("Printing all repos of the current user:");
 			var obj = JSON.parse(body);
 			for( var i = 0; i < obj.length; i++ )
 			{
@@ -96,112 +94,65 @@ function listAuthenicatedUserRepos()
 // 1. Write code for listBranches in a given repo under an owner. See list branches
 async function listBranches(owner,repo)
 {
-	//let options = getDefaultOptions(`/repos/joomla/joomla-cms/branches`, "GET");
-	let options = getDefaultOptions(`/repos/${owner}/${repo}/branches`, "GET");
+	let options = getDefaultOptions(`/`, "GET");
 
 	// Send a http request to url and specify a callback that will be called upon its return.
 	return new Promise(function(resolve, reject)
 	{
 		request(options, function (error, response, body) {
 
-			if( error )
-			{
-				console.log( chalk.red( error ));
-				reject(error);
-				return; // Terminate execution.
-			}
-
-			console.log(" ");
-			console.log("Listing all branches of the current user's repo:");
-			var obj = JSON.parse(body);
-			for( var i = 0; i < obj.length; i++ )
-			{
-				var name = obj[i].name;
-				console.log( name );
-			}
 			// console.debug( options );
-			//resolve( JSON.parse(body) );
-			resolve(obj);
-			
+			resolve( JSON.parse(body) );
+
 		});
 	});
 }
 
 // 2. Write code to create a new repo
-
 async function createRepo(owner,repo)
-
 {
-    let options = getDefaultOptions('/user/repos', "POST");
-    options.json =  {
+	let options = getDefaultOptions("/", "POST");
 
-        name: repo
+	// Send a http request to url and specify a callback that will be called upon its return.
+	return new Promise(function(resolve, reject)
+	{
+		request(options, function (error, response, body) {
 
-    }
+			resolve( response.statusCode );
 
-    // Send a http request to url and specify a callback that will be called upon its return.
-   return new Promise(function(resolve, reject)
-    {
-        request(options, function (error, response, body) {
-
-            console.log(response.statusCode);
-            resolve( response.statusCode );
-
-        });
-
-    });
-
-
-
+		});
+	});
 
 }
 // 3. Write code for creating an issue for an existing repo.
-async function createIssue(owner,repo, issueName)
+async function createIssue(owner,repo, issueName, issueBody)
 {
-	let options = getDefaultOptions(`/repos/${owner}/${repo}/issues`, "POST");
-    options.json =  {
+	let options = getDefaultOptions("/", "POST");
 
-        title: issueName,
-        body: 'test issueBody',
-        labels: ['bug']
-
-    }
 	// Send a http request to url and specify a callback that will be called upon its return.
-    return new Promise(function(resolve, reject)
-    {
-        request(options, function (error, response, body) {
+	return new Promise(function(resolve, reject)
+	{
+		request(options, function (error, response, body) {
 
-            console.log(response.statusCode);
-            resolve( response.statusCode );
+			resolve( response.statusCode );
 
-        });
-
-    });
-
+		});
+	});
 }
 
 // 4. Write code for editing a repo to enable wiki support.
 async function enableWikiSupport(owner,repo)
 {
-	let options = getDefaultOptions(`/repos/${owner}/${repo}`, "PATCH");
-    options.json = {
-        name: repo,
-		description: 'update wiki page',
-		has_wiki: true
-    }
+	let options = getDefaultOptions("/", "PATCH");
 
 	// Send a http request to url and specify a callback that will be called upon its return.
-    return new Promise(function(resolve, reject)
-    {
-        request(options, function (error, response, body) {
+	return new Promise(function(resolve, reject)
+	{
+		request(options, function (error, response, body) {
 
-            console.log(response.statusCode);
-            console.log(response.body);
-            resolve( response);
-
-        });
-
-    });
+			resolve( JSON.parse(body) );
+		});
+	});	
 }
 
 module.exports.getUser = getUser;
