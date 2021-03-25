@@ -8,7 +8,9 @@ var urlRoot = "https://api.github.com";
 
 var userId = "yy2111";
 var config = {};
+
 // Retrieve our api token from the environment variables.
+require('dotenv').config();
 config.token = process.env.GITHUBTOKEN;
 
 if( !config.token )
