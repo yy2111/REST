@@ -108,14 +108,12 @@ git clone https://github.com/yy2111/REST
 
 Go to your profile page on github, select "Settings" --> "Developer settings" --> "Personal access tokens", and then click on "Generate new token" button.
 
-Save your token in an [environment variable]. This step may be a little tricky, and please read instructions on this page carefully: https://github.com/chrisparnin/EngineeringBasics/blob/master/Shells.md#environment-variables.
-
-```bash
-# Mac/Linux
-export GITHUBTOKEN="xxx"
-# Windows
-setx GITHUBTOKEN xxx
+Create a file `.env` in the root of the project and add your access token.
 ```
+GITHUBTOKEN=abc123
+```
+
+> **Do not** push the `.env` file to github. This will expose your Github token.
 
 ### 2. Test sample code
 
