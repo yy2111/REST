@@ -96,9 +96,9 @@ Although debugging from the browser console window or with command line tools ca
 
 ## Programmatic API requests
 
-You will get practice interacting with the GitHub REST API.
+You will get practice interacting with the GitHub REST API. 
 
-Before you start, make sure you have a local copy of this workshop, and change your working directory (`cd REST`).
+Before you start, make sure you have a local copy of this workshop, and change your working directory (`cd REST`). **Note: Make sure to execute "git init" so that your local work will be under git management.**
 
 ```bash
 git clone https://github.com/yy2111/REST
@@ -106,7 +106,7 @@ git clone https://github.com/yy2111/REST
 
 ### 1. Get a token. 
 
-Go to your profile page on github, select "Settings" --> "Developer settings" --> "Personal access tokens", and then click on "Generate new token" button.
+Go to your profile page on github, select "Settings" --> "Developer settings" --> "Personal access tokens", and then click on "Generate new token" button. **Note: you may need to ensure full control to the repositories in order to be able to modify the content remotely.**
 
 Save your token in an [environment variable]. This step may be a little tricky, and please read instructions on this page carefully: https://github.com/chrisparnin/EngineeringBasics/blob/master/Shells.md#environment-variables.
 
@@ -184,7 +184,7 @@ Tips for extending.
 Do the following tasks with a partner. For each task, consider what's the right HTTP VERB, the REST API url, and what part of the response body should you print out?
 
 * Write code for listBranches in a given repo under an owner. See [list branches](https://developer.github.com/v3/repos/#list-branches)
-* Write code for [create a new repo](https://developer.github.com/v3/repos/#create)
+* Write code for [create a new repo](https://developer.github.com/v3/repos/#create) **Note: there are two API to complete this task: 1) in Github Rest API v3, use "/user/repo" endpoint; 2) in Github Rest API v4 (current), you can manually create an organization on Github, and then use "/orgs/{org}/repos" endpoint.**
 
 ### 4. On your own
 
@@ -241,7 +241,7 @@ You should be able to test your code using the following sequences of commands.
 # Post content to server. Service returns retrieval link.
 $ curl --request POST -H "Content-Type: application/json" --data '{"coffee":1,"milk":1,"sugar":1,"chocolate":1}' http://localhost:3000/share
 {"success":true,"link":"http://localhost:3000/pgiPc2"}
-# Retrieve content
+# Retrieve content **(NOTE: You need to update the link with the one outputed from the previous step.)**
 $ curl http://localhost:3000/pgiPc2
 {"coffee":1,"milk":1,"sugar":1,"chocolate":1}
 # A second read will result in "Not Found" message.
