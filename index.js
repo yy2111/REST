@@ -26,7 +26,7 @@ if (process.env.NODE_ENV != 'test')
 	(async () => {
 		await listAuthenicatedUserRepos();
 		//await listBranches(userId, "your repo");
-		//await createRepo(userId,newrepo);
+		//await createRepo(userId,"newrepo");
 		//await createIssue(userId, repo, issue);
 		//await enableWikiSupport(userId,repo);
 
