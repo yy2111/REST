@@ -98,7 +98,7 @@ Although debugging from the browser console window or with command line tools ca
 
 You will get practice interacting with the GitHub REST API. 
 
-Before you start, make sure you have a local copy of this workshop, and change your working directory (`cd REST`). **Note: Make sure to execute "git init" so that your local work will be under git management.**
+Before you start, make sure you have a local copy of this workshop, and change your working directory (`cd REST`). **Note: Make sure to execute "git init" so that your local work will be under git management. We did this practice in the previous Git&Github lab. For more detailed instructions, you may refer to this tutorial: https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line**
 
 ```bash
 git clone https://github.com/yy2111/REST
